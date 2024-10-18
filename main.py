@@ -28,8 +28,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type = update.message.chat.type
     text = update.message.text
 
-    print(f'User ({update.message.chat.id}) in {message_type}: "{text}"')
-
     if message_type == 'group':
         if BOT in text:
             new_text = text.replace(BOT, '').strip()
@@ -54,14 +52,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     print('Starting...')
     application = Application.builder().token(TOKEN).build()
-    print('build')
     # commands
     application.add_handler(CommandHandler("start", start_command))
-    print('start')
     # Messages
-    print('sending message')
     application.add_handler(MessageHandler(filters.TEXT, handle_message))
-
     # polling
     print('Polling...')
     application.run_polling()
