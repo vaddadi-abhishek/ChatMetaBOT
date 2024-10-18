@@ -45,9 +45,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if 'link' in source and source['link']:
                 await update.message.reply_text({source['title']})
                 await update.message.reply_text({source['link']})
-    # await update.message.reply_text(response['message'])
-    
-
 
 def main():
     print('Starting...')
